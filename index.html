@@ -43,6 +43,7 @@
   .note[open-state="true"] .note-sign{transform:rotate(45deg);}
   .note-body{max-height:0;overflow:hidden;transition:max-height .35s ease;}
   .note-body p{color:var(--ink-soft);font-size:15.5px;padding:0 0 22px 70px;}
+  .note-body p + p{margin-top:12px;}
   @media (max-width:520px){.note-body p{padding-left:0;}}
 
   .photo-block{aspect-ratio:16/10;background:linear-gradient(135deg,var(--paper-deep),var(--sage) 180%);
@@ -69,6 +70,12 @@
   .need-answer .inner{padding:12px 0;}
   .need-answer h5{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin-bottom:8px;}
   .need-answer p{font-size:15px;color:var(--ink-soft);}
+
+  /* shop link */
+  .shop-link{display:inline-block;margin-top:28px;padding:14px 28px;background:var(--ink);color:var(--paper);
+    font-family:'Karla',sans-serif;font-weight:600;font-size:13px;letter-spacing:.5px;
+    text-transform:uppercase;text-decoration:none;transition:background .2s ease;}
+  .shop-link:hover{background:var(--sage);}
 
   /* email */
   .signup{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap;}
@@ -116,6 +123,7 @@
       <h5 id="answerTitle"></h5>
       <p id="answerBody"></p>
     </div></div>
+    <a href="https://www.zinzino.com/2021093229" target="_blank" rel="noopener" class="shop-link">Shop ZinZino Products</a>
   </section>
 
   <section class="reveal">
@@ -133,9 +141,29 @@
 
 <script>
 const NOTES = [
-  {tag:"note", title:"Why I started", body:"I got tired of programs that promise everything and ask you to overhaul your whole life overnight. What's worked for me is small, consistent, honest. Kept simply, kept up."},
-  {tag:"note", title:"What I share", body:"Real routines, real content, and the products I actually use myself, matched to what someone's actually dealing with rather than a one-size list."},
-  {tag:"note", title:"How I pick what to recommend", body:"If it doesn't survive a busy week in my own routine, it doesn't make the list. I'd rather recommend three things I stand behind than thirty I don't."}
+  {
+    tag:"note",
+    title:"Why I started",
+    body:[
+      "I started my business with ZinZino because I wanted to take a more personalized approach to health and wellness while creating something of my own. I\u2019ve always had a passion for helping people, but I wanted to move beyond simply treating problems and instead help people better understand what their bodies need.",
+      "At the same time, I wanted to create an additional stream of income and build a business that gives me more freedom, flexibility, and control over my future. ZinZino gave me a way to combine my passion for wellness, helping others, and entrepreneurship into something that could grow with me.",
+      "For me, this isn\u2019t just about selling products. It\u2019s about helping people become more informed about their health while building a life and business that allows me to live with more intention and freedom."
+    ]
+  },
+  {
+    tag:"note",
+    title:"What I share",
+    body:[
+      "I share my use of the products and what I personally take. I share my personal lifestyle and why I made the choice to go on this journey. I share positive thoughts and mindset."
+    ]
+  },
+  {
+    tag:"note",
+    title:"How I pick what to recommend",
+    body:[
+      "Based on questions answered and the personal needs of the potential client. Everyone\u2019s situation is different, and I\u2019d rather ask first than assume."
+    ]
+  }
 ];
 
 const NEEDS = [
@@ -155,13 +183,14 @@ NOTES.forEach((n, i) => {
   const wrap = document.createElement('div');
   wrap.className = 'note';
   wrap.setAttribute('open-state','false');
+  const bodyHTML = n.body.map(p => `<p>${p}</p>`).join('');
   wrap.innerHTML = `
     <button class="note-btn" aria-expanded="false" aria-controls="nb${i}">
       <span class="note-tag">${n.tag},</span>
       <span class="note-title">${n.title}</span>
       <span class="note-sign">+</span>
     </button>
-    <div class="note-body" id="nb${i}"><p>${n.body}</p></div>`;
+    <div class="note-body" id="nb${i}">${bodyHTML}</div>`;
   const btn = wrap.querySelector('.note-btn');
   const body = wrap.querySelector('.note-body');
   btn.addEventListener('click', () => {
