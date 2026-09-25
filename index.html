@@ -57,15 +57,17 @@
   /* need picker */
   .need-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px;}
   @media (max-width:560px){.need-grid{grid-template-columns:1fr;}}
-  .need-card{background:var(--paper-deep);border:1px solid var(--line);padding:22px;cursor:pointer;
-    text-align:left;font:inherit;color:inherit;transition:border-color .2s ease,background .2s ease,transform .2s ease;}
-  .need-card:hover{transform:translateY(-2px);border-color:var(--sage);}
+  .need-card{background:rgba(255,255,255,0.18);backdrop-filter:blur(10px);border:1px solid var(--line);padding:22px;cursor:pointer;
+  text-align:left;font:inherit;color:inherit;transition:border-color .2s ease,background .2s ease,transform .2s ease;position:relative;}
+  .need-card::after{content:"↓ tap to explore";position:absolute;bottom:12px;right:12px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--ink-soft);opacity:0.6;}
+  .need-card:hover{transform:translateY(-2px);background:rgba(255,255,255,0.30);}
   .need-card:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
   .need-card[aria-pressed="true"]{border-color:var(--gold);background:#FBF6E8;}
+  .need-card[aria-pressed="true"]::after{content:"↑ showing below";color:var(--gold);opacity:1;}
   .need-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:17px;margin-bottom:6px;}
   .need-card p{font-size:14px;color:var(--ink-soft);}
 
-  .need-answer{margin-top:22px;border-left:3px solid var(--sage);padding:2px 0 2px 20px;
+  .need-answer{margin-top:22px;border-left:3px solid var(--gold);padding:0;
     max-height:0;overflow:hidden;transition:max-height .4s ease;}
   .need-answer .inner{padding:12px 0;}
   .need-answer h5{font-family:'Fraunces',serif;font-weight:500;font-size:18px;margin-bottom:8px;}
@@ -213,12 +215,17 @@ NEEDS.forEach(n => {
   b.type = 'button';
   b.setAttribute('aria-pressed','false');
   b.innerHTML = `<h4>${n.h}</h4><p>${n.p}</p>`;
-  b.addEventListener('click', () => {
+    b.addEventListener('click', () => {
     document.querySelectorAll('.need-card').forEach(c => c.setAttribute('aria-pressed','false'));
     b.setAttribute('aria-pressed','true');
     ansTitle.textContent = n.at;
     ansBody.textContent = n.ab;
-    ansEl.style.maxHeight = ansEl.scrollHeight + 40 + 'px';
+    
+    // Collapse first, then re-open with new content
+    ansEl.style.maxHeight = '0px';
+    setTimeout(() => {
+      ansEl.style.maxHeight = ansEl.scrollHeight + 40 + 'px';
+    }, 50);
   });
   needsEl.appendChild(b);
 });
