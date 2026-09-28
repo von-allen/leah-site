@@ -23,7 +23,7 @@
   section{padding:56px 0;border-bottom:1px solid var(--line);}
   section:last-of-type{border-bottom:none;}
 
-  .eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:18px;}
+  .eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#4B7FBE;font-weight:600;margin-bottom:18px;}
 
   .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;}
   .reveal.in{opacity:1;transform:none;}
@@ -36,10 +36,10 @@
     width:100%;background:none;border:none;cursor:pointer;text-align:left;
     padding:22px 0;display:flex;align-items:baseline;gap:18px;font:inherit;color:inherit;
   }
-  .note-btn:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .note-btn:focus-visible{outline:2px solid #4B7FBE;outline-offset:3px;}
   .note-tag{font-family:'Fraunces',serif;font-style:italic;font-size:13px;color:var(--sage);flex-shrink:0;width:52px;transform:rotate(-2deg);}
   .note-title{font-family:'Fraunces',serif;font-weight:500;font-size:22px;flex:1;}
-  .note-sign{color:var(--gold);font-size:20px;line-height:1;transition:transform .25s ease;}
+  .note-sign{color:#4B7FBE;font-size:20px;line-height:1;transition:transform .25s ease;}
   .note[open-state="true"] .note-sign{transform:rotate(45deg);}
   .note-body{max-height:0;overflow:hidden;transition:max-height .35s ease;}
   .note-body p{color:var(--ink-soft);font-size:15.5px;padding:0 0 22px 70px;}
@@ -51,7 +51,7 @@
     color:var(--ink-soft);font-size:12px;letter-spacing:1px;text-transform:uppercase;margin:34px 0;}
 
   .pull-quote{font-family:'Fraunces',serif;font-style:italic;font-size:24px;line-height:1.5;
-    border-left:3px solid var(--gold);padding-left:24px;margin:20px 0;}
+    border-left:3px solid #4B7FBE;padding-left:24px;margin:20px 0;}
   .pull-quote cite{display:block;font-family:'Karla',sans-serif;font-style:normal;font-size:13px;color:var(--ink-soft);margin-top:12px;}
 
   /* need picker */
@@ -61,7 +61,8 @@
   text-align:left;font:inherit;color:inherit;transition:border-color .2s ease,background .2s ease,transform .2s ease;position:relative;}
   .need-card::after{content:"↓ tap to explore";position:absolute;bottom:12px;right:12px;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--ink-soft);opacity:0.6;}
   .need-card:hover{transform:translateY(-2px);background:rgba(255,255,255,0.30);}
-  .need-card:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}.need-card[aria-pressed="true"]{border-color:#4B7FBE;background:#FBF6E8;}.need-card[aria-pressed="true"]::after{content:"↑ showing below";color:#4B7FBE;opacity:1;}
+  .need-card:focus-visible{outline:2px solid #4B7FBE;outline-offset:3px;}
+  .need-card[aria-pressed="true"]{border-color:#4B7FBE;background:#FBF6E8;}.need-card[aria-pressed="true"]::after{content:"↑ showing below";color:#4B7FBE;opacity:1;}
   .need-card h4{font-family:'Fraunces',serif;font-weight:500;font-size:17px;margin-bottom:6px;}
   .need-card p{font-size:14px;color:var(--ink-soft);}
 
@@ -87,7 +88,7 @@
   .signup{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap;}
   .signup input{flex:1;min-width:200px;padding:13px 15px;border:1px solid var(--line);
     background:#FBF8EF;font:inherit;font-size:15px;color:var(--ink);}
-  .signup input:focus{outline:2px solid var(--gold);outline-offset:-1px;}
+  .signup input:focus{outline:2px solid #4B7FBE;outline-offset:-1px;}
   .signup button{padding:13px 24px;border:none;background:var(--ink);color:var(--paper);
     font-family:'Karla',sans-serif;font-weight:600;font-size:13px;letter-spacing:.5px;
     text-transform:uppercase;cursor:pointer;}
@@ -133,7 +134,6 @@
   </section>
 
   <section class="reveal">
-    <section class="reveal">
     <div class="eyebrow">Follow along</div>
     <p style="color:var(--ink-soft);font-size:15.5px;max-width:44ch;">A short note every couple of weeks. What I'm trying, what stuck, what didn't.</p>
     <form class="signup" id="signup" novalidate>
